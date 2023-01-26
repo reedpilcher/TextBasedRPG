@@ -1,8 +1,11 @@
 package rpg;
 //importing java package Scanner to allow user inputs
+import rpg.Battle;
 
 import java.util.Scanner;
 //importing java random package to generate random numbers for battling
+
+import java.lang.reflect.Array;
 
 import java.util.Random;
 public class Main {
@@ -10,6 +13,7 @@ public class Main {
 
         //Introduction screen with instructions to add your name
 
+       
 System.out.println("Welcome to Dolphin Fables. What is your name? press enter when complete.");
 //creating new character objects with certain characteristics to allow more preferences
 
@@ -36,7 +40,7 @@ System.out.println("Welcome to Dolphin Fables. What is your name? press enter wh
 
         hero.addName(nameinput);
        Scanner style = new Scanner(System.in);
-       System.out.println("What style do you belong to?\nType in the number which corresponds to you:\n1. Hero style\n2. Wizard style\n3. Guard style\n4.Healer style");
+       System.out.println("What style do you belong to?\nType in the number which corresponds to you:\n1. Swordsman style\n2. Wizard style\n3. Guard style\n4.Healer style");
        int styleinput = style.nextInt();
 //switch case to determine which style your character belongs to
 // as well as output their new stats
@@ -52,51 +56,109 @@ System.out.println("Welcome to Dolphin Fables. What is your name? press enter wh
             }
             case 2 -> {
                 System.out.println("Congratulations! You have selected the Wizard style!");
-                wizard.addHp(8);
-                wizard.addAttack(5);
-                wizard.addDefense(6);
-                wizard.addMagic(10);
+                hero.addHp(8);
+                hero.addAttack(5);
+                hero.addDefense(6);
+                hero.addMagic(10);
                 System.out.println("Name: " + nameinput);
-                wizard.printstats();
+                hero.printstats();
             }
             case 3 -> {
                 System.out.println("Congratulations! You have selected the Guard style!");
-                guard.addHp(9);
-                guard.addAttack(4);
-                guard.addDefense(10);
-                guard.addMagic(5);
+                hero.addHp(9);
+                hero.addAttack(4);
+                hero.addDefense(10);
+                hero.addMagic(5);
                 System.out.println("Name: " + nameinput);
-                guard.printstats();
+                hero.printstats();
             }
             case 4 -> {
                 System.out.println("Congratulations! You have selected the Healer style!");
-                healer.addHp(12);
-                healer.addAttack(5);
-                healer.addDefense(8);
-                healer.addMagic(7);
+                hero.addHp(12);
+                hero.addAttack(5);
+                hero.addDefense(8);
+                hero.addMagic(7);
                 System.out.println("Name: " + nameinput);
-                healer.printstats();
+                hero.printstats();
             }
 
         }
         System.out.println("Oh crap! You ran into a goblin.\nYou must battle him to prove your value.");
-System.out.println("Enter 1 and press return to attack!");
+
        int answer = goblin1.hp;
        int heroHP = hero.hp;
-
+       
+        
         Scanner option = new Scanner(System.in);
         int choice = option.nextInt();
-        if (choice == 1){
-            System.out.println("You attacked the goblin!, he attacked back!reed");
-        }
         Battle battle1 = new Battle();
-        battle1.battle(answer, heroHP);
+        System.out.println("Select your Option:\n1. Attack\n2.Guard\n3.Use Magic");
+        
+        for (int i = 0; (i < goblin1.hp) && (i < hero.hp  ) && (i == 0); i++){
+        switch (choice){
+        case 1:  {  System.out.println("You attacked the goblin!, he attacked back!");
+        
+        if ((battle1.battle(goblin1.hp, hero.hp)) ==true){
+        hero.takeDamage((hero.hp - goblin1.attack));
+        goblin1.takeDamage(goblin1.hp - hero.attack);
+        System.out.println("Your HP:" + hero.hp);
+            System.out.println("Enemy HP:" + goblin1.hp) ;}
+        else if((battle1.battle(answer, heroHP)) ==false ){
+                
+            System.out.println("Your HP:" + hero.hp);
+            System.out.println("Enemy HP:" + goblin1.hp);}
+            i--;
+        break;}
+            case 2: {System.out.println("You guarded the attack!, his attack was blocked!");
+            
+                if ((battle1.battle(goblin1.hp, hero.hp)) ==true){
+                    hero.takeDamage((hero.hp));
+                    goblin1.takeDamage(goblin1.hp);
+                    System.out.println("Your HP:" + hero.hp);
+                        System.out.println("Enemy HP:" + goblin1.hp) ;}
+                    else if((battle1.battle(answer, heroHP)) ==false ){
+                            
+                        System.out.println("Your HP:" + hero.hp);
+                        System.out.println("Enemy HP:" + goblin1.hp);}}
+                        break;
+            
+            case 3: {
+                System.out.println("You attacked the goblin using magic!, he attacked back!");
+                
+                if ((battle1.battle(goblin1.hp, hero.hp)) ==true){
+                    hero.takeDamage((hero.hp - goblin1.attack));
+                    goblin1.takeDamage(goblin1.hp - hero.magic);
+                    System.out.println("Your HP:" + hero.hp);
+                        System.out.println("Enemy HP:" + goblin1.hp) ;}
+                    else if((battle1.battle(answer, heroHP)) ==false ){
+                        System.out.println("Your HP:" + hero.hp);
+                        System.out.println("Enemy HP:" + goblin1.hp);}
+                        i--;
+                        break;
+            }}
+            
+
+           
+
+        
+           
+
+        
+
+        }
+            System.out.println("You have slain the goblin.");}
+            
+        
+        
+        
+            
+    
+    }
 
 
+       
 
-       }
-
-       }
+       
 
 
 

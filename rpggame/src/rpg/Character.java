@@ -17,6 +17,8 @@ public class Character {
     public void addHp(int newvalue) {
         hp = newvalue;
     }
+    public void takeDamage(int newvalue) {
+        hp = newvalue;}
     public void addAttack(int newvalue){
         attack = newvalue;
     }
@@ -26,6 +28,7 @@ public class Character {
     public void addMagic(int newvalue){
         magic = newvalue;
     }
+
 
 
 
@@ -49,4 +52,12 @@ public class Character {
             System.out.println("Magic: " + magic);
 
 
-    }}
+    }
+    public void printhealth() {
+        System.out.println("HP: " + hp);
+        System.out.println("HP: " + hp);
+    
+    }
+
+
+}
