@@ -20,7 +20,6 @@ public class Main {
         // preferences
 
         Character hero = new Character();
-        
 
         // creation of a new enemy goblin using the same stat types as the character
 
@@ -39,7 +38,8 @@ public class Main {
 
         hero.addName(nameinput);
         Scanner style = new Scanner(System.in);
-        System.out.println("What style do you belong to?\nType in the number which corresponds to you:\n1. Swordsman style\n2. Wizard style\n3. Guard style\n4.Healer style");
+        System.out.println(
+                "What style do you belong to?\nType in the number which corresponds to you:\n1. Swordsman style\n2. Wizard style\n3. Guard style\n4.Healer style");
         int styleinput = style.nextInt();
         // switch case to determine which style your character belongs to
         // as well as output their new stats
@@ -80,14 +80,25 @@ public class Main {
                 System.out.println("Name: " + nameinput);
                 hero.printstats();
             }
-
         }
+        // placeholder lines to seperate text more clearly
+        System.out.println("~");
+        System.out.println("------------------------------------------------");
+        System.out.println("~");
+        
+       promptEnterKey();
         System.out.println("Oh crap! You ran into a goblin.\nYou must battle him to prove your value.");
 
         int answer = goblin1.hp;
         int heroHP = hero.hp;
-        while(hero.hp > 0 && goblin1.hp > 0) {
+        while (hero.hp > 0 && goblin1.hp > 0) {
+            System.out.println("~");
+            System.out.println("------------------------------------------------");
+            System.out.println("~");
             System.out.println("Select your Option:\n1. Attack\n2.Guard\n3.Use Magic");
+            System.out.println("~");
+            System.out.println("------------------------------------------------");
+            System.out.println("~");
             Scanner option = new Scanner(System.in);
             int choice = option.nextInt();
             Battle battle1 = new Battle();
@@ -101,9 +112,15 @@ public class Main {
                         hero.takeDamage(hero.hp - goblin1.attack);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
+                        System.out.println("~");
+                        System.out.println("------------------------------------------------");
+                        System.out.println("~");
                     } else if (battle1.battle(answer, heroHP) == false) {
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
+                        System.out.println("~");
+                        System.out.println("------------------------------------------------");
+                        System.out.println("~");
                     }
                     break;
                 }
@@ -139,10 +156,23 @@ public class Main {
                 }
             }
         }
+        // Notifying you that the battle is over
         if (hero.hp > 0 && goblin1.hp <= 0) {
             System.out.println("You have slain the goblin.");
         }
+        // Transition from introduction to Chapter 1
+        System.out.println("You hear a faint noise in the background.\nIt sounds so familiar and annoying.\n");
+        System.out.println("You open your eyes.\nThe sun is blinding you.\nYou realize it was all a dream.");
+        System.out.println("Chapter 1: Middle School");
+        promptEnterKey();
 
-       
     }
+
+    // method to simplify promting user to press enter
+    private static void promptEnterKey() {
+        System.out.println("Press ENTER to continue");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
+
 }
