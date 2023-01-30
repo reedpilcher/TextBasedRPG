@@ -39,7 +39,7 @@ public class Main {
         hero.addName(nameinput);
         Scanner style = new Scanner(System.in);
         System.out.println(
-                "What style do you belong to?\nType in the number which corresponds to you:\n1. Swordsman style\n2. Wizard style\n3. Guard style\n4.Healer style");
+                "What style do you belong to?\nType in the number which corresponds to you:\n1. Swordsman style\n2. Wizard style\n3. Guard style\n4. Healer style");
         int styleinput = style.nextInt();
         // switch case to determine which style your character belongs to
         // as well as output their new stats
@@ -82,23 +82,21 @@ public class Main {
             }
         }
         // placeholder lines to seperate text more clearly
-        System.out.println("~");
         System.out.println("------------------------------------------------");
-        System.out.println("~");
-        
-       promptEnterKey();
+
+        promptEnterKey();
         System.out.println("Oh crap! You ran into a goblin.\nYou must battle him to prove your value.");
 
         int answer = goblin1.hp;
         int heroHP = hero.hp;
         while (hero.hp > 0 && goblin1.hp > 0) {
-            System.out.println("~");
+
             System.out.println("------------------------------------------------");
-            System.out.println("~");
+
             System.out.println("Select your Option:\n1. Attack\n2.Guard\n3.Use Magic");
-            System.out.println("~");
+
             System.out.println("------------------------------------------------");
-            System.out.println("~");
+
             Scanner option = new Scanner(System.in);
             int choice = option.nextInt();
             Battle battle1 = new Battle();
@@ -112,15 +110,15 @@ public class Main {
                         hero.takeDamage(hero.hp - goblin1.attack);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
-                        System.out.println("~");
+
                         System.out.println("------------------------------------------------");
-                        System.out.println("~");
+
                     } else if (battle1.battle(answer, heroHP) == false) {
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
-                        System.out.println("~");
+
                         System.out.println("------------------------------------------------");
-                        System.out.println("~");
+
                     }
                     break;
                 }
@@ -165,6 +163,50 @@ public class Main {
         System.out.println("You open your eyes.\nThe sun is blinding you.\nYou realize it was all a dream.");
         System.out.println("Chapter 1: Middle School");
         promptEnterKey();
+        System.out.println("You hear your alarm ringing.\nYou're about to miss the bus.\nWhat are you going to do?");
+
+        System.out.println("------------------------------------------------");
+
+        System.out.println(
+                "Select your Option:\n1.Throw alarm clock across the room\n2.Turn alarm off and get ready for school");
+        System.out.println("~");
+        System.out.println("------------------------------------------------");
+        System.out.println("~");
+        Scanner alarm = new Scanner(System.in);
+        int alarmclock = Integer.parseInt(alarm.nextLine());
+        // switch case to dictate a certain path of throwing alarm clock or getting up
+        // and going to school, as well as the consequences of either
+        switch (alarmclock) {
+            case 1:
+                System.out.println("You threw your alarm clock across the room.");
+                System.out.println("It shatters into a million pieces.\nYou hear loud footsteps approaching.");
+                System.out.println(nameinput);
+                promptEnterKey();
+                System.out.println("WHAT THE HELL ARE YOU DOING?!?");
+                promptEnterKey();
+                System.out
+                        .println("GET YOUR ASS UP AND GO TO SCHOOL\nWHEN YOU GET HOME, YOU'RE GROUNDED, " + nameinput);
+                System.out.println("You ran to the bus and barely made it");
+                promptEnterKey();
+                System.out.println("*7 Hours go by, and you walk off the bus after school*");
+                promptEnterKey();
+                System.out.println(
+                        "You waddle to your room, bored as hell.\nYou know you're gonna be stuck here all day.");
+                break;
+
+            case 2:
+                System.out.println("You got up and got ready for school");
+                promptEnterKey();
+                System.out.println("You ran to the bus and barely made it");
+                promptEnterKey();
+                System.out.println("*7 Hours go by, and you walk off the bus after school*");
+                promptEnterKey();
+                System.out.println("You get home and decide you want to walk to the park and hang out.");
+                promptEnterKey();
+                System.out.println("As you are halfway there, the neighborhood bully Jimmy approaches you.");
+                promptEnterKey();
+
+        }
 
     }
 

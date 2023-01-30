@@ -61,5 +61,5 @@ public class Character {
         System.out.println("HP: " + hp);
 
     }
-    
+
 }

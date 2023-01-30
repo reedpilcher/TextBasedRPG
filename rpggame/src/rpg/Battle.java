@@ -6,8 +6,7 @@ import java.util.stream.IntStream;
 import static java.lang.System.*;
 
 public class Battle {
-    
-    
+
     private int sword;
     private int value;
 
