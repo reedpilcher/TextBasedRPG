@@ -22,6 +22,17 @@ public class Main {
         Character hero = new Character();
 
         // creation of a new enemy goblin using the same stat types as the character
+        Character boredom = new Character();
+        boredom.addAttack(1);
+        boredom.addDefense(5);
+        boredom.addHp(40);
+        boredom.addMagic(0);
+
+        Character jimmy = new Character();
+        jimmy.addAttack(4);
+        jimmy.addDefense(5);
+        jimmy.addHp(22);
+        jimmy.addMagic(0);
 
         Character goblin1 = new Character();
         goblin1.addAttack(2);
@@ -81,12 +92,14 @@ public class Main {
                 hero.printstats();
             }
         }
+        int originalHP = (hero.hp);
         // placeholder lines to seperate text more clearly
         System.out.println("------------------------------------------------");
 
         promptEnterKey();
         System.out.println("Oh crap! You ran into a goblin.\nYou must battle him to prove your value.");
-
+        System.out.println("Your HP:" + hero.hp);
+        System.out.println("Enemy HP:" + goblin1.hp);
         int answer = goblin1.hp;
         int heroHP = hero.hp;
         while (hero.hp > 0 && goblin1.hp > 0) {
@@ -100,20 +113,21 @@ public class Main {
             Scanner option = new Scanner(System.in);
             int choice = option.nextInt();
             Battle battle1 = new Battle();
+            // Battle battle2 = new Battle();
 
             switch (choice) {
                 case 1: {
                     System.out.println("You attacked the goblin!, he attacked back!");
 
-                    if ((battle1.battle())) {
-                        goblin1.takeDamage(goblin1.hp - hero.attack);
-                        hero.takeDamage(hero.hp - goblin1.attack);
+                    if (battle1.battleGoblin()) {
+                        goblin1.takeDamage((goblin1.hp) - hero.attack);
+                        hero.takeDamage(hero.hp - (goblin1.attack));
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
 
                         System.out.println("------------------------------------------------");
-
-                    } else if (battle1.battle(answer, heroHP) == false) {
+                        // else if (battle1.battle(answer, heroHP) == false)
+                    } else if (battle1.battleGoblin() == false) {
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
 
@@ -124,13 +138,14 @@ public class Main {
                 }
                 case 2: {
                     System.out.println("You guarded the attack!, his attack was blocked!");
-
-                    if ((battle1.battle(goblin1.hp, hero.hp))) {
+                    // if ((battle1.battle(goblin1.hp, hero.hp)))
+                    if ((battle1.battleGoblin())) {
                         hero.takeDamage((hero.hp));
                         goblin1.takeDamage(goblin1.hp);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
-                    } else if ((battle1.battle(answer, heroHP)) == false) {
+                        // else if ((battle1.battle(answer, heroHP)) == false)
+                    } else if ((battle1.battleGoblin()) == false) {
 
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
@@ -140,13 +155,14 @@ public class Main {
 
                 case 3: {
                     System.out.println("You attacked the goblin using magic!, he attacked back!");
-
-                    if ((battle1.battle(goblin1.hp, hero.hp))) {
+                    // if ((battle1.battle(goblin1.hp, hero.hp)))
+                    if (battle1.battleGoblin()) {
                         hero.takeDamage((hero.hp - goblin1.attack));
                         goblin1.takeDamage(goblin1.hp - hero.magic);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
-                    } else if ((battle1.battle(answer, heroHP)) == false) {
+                        // else if ((battle1.battle(answer, heroHP)) == false)
+                    } else if ((battle1.battleGoblin()) == false) {
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
                     }
@@ -157,6 +173,8 @@ public class Main {
         // Notifying you that the battle is over
         if (hero.hp > 0 && goblin1.hp <= 0) {
             System.out.println("You have slain the goblin.");
+            System.out.println("Your hp was replinished, and increased slightly.");
+            hero.addHp(originalHP + 3);
         }
         // Transition from introduction to Chapter 1
         System.out.println("You hear a faint noise in the background.\nIt sounds so familiar and annoying.\n");
@@ -207,7 +225,192 @@ public class Main {
                 promptEnterKey();
 
         }
+        Battle battle3 = new Battle();
+        // battle dictated on decision 1 - Battle with Boredom
+        // or 2 - Battle with Jimmy
+        if (alarmclock == 1) {
+            while (hero.hp > 0 && boredom.hp > 0) {
 
+                System.out.println("------------------------------------------------");
+
+                System.out.println("Select your Option:\n1. Attack\n2.Guard\n3.Use Magic");
+
+                System.out.println("------------------------------------------------");
+
+                Scanner option = new Scanner(System.in);
+                int choice = option.nextInt();
+                // Battle battle1 = new Battle();
+                // Battle battle2 = new Battle();
+                // Battle battle3 = new Battle();
+
+                switch (choice) {
+                    case 1: {
+                        System.out.println("You read a book,\nyour boredom worsens!");
+
+                        if (battle3.battleBoredom()) {
+                            boredom.takeDamage(boredom.hp - hero.attack);
+                            hero.takeDamage(hero.hp - boredom.attack);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+
+                            System.out.println("------------------------------------------------");
+
+                        } else if (battle3.battleBoredom() == false) {
+                            System.out.println("You tried to turn the tv on, but it's unplugged!");
+                            hero.takeDamage(hero.hp - boredom.attack);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+
+                            System.out.println("------------------------------------------------");
+
+                        }
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("You quietly listened to music!,\nboredom is tempoarily halted!");
+
+                        if ((battle3.battleBoredom())) {
+
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+
+                        } else if ((battle3.battleBoredom()) == false) {
+                            hero.takeDamage((hero.hp - boredom.attack));
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+                        }
+                    }
+                        break;
+
+                    case 3: {
+                        System.out.println("You drew a picture!,\nbut you're still a little bored!");
+
+                        if (battle3.battleBoredom()) {
+                            hero.takeDamage((hero.hp - boredom.attack));
+                            boredom.takeDamage(boredom.hp - hero.magic);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+
+                        } else if ((battle3.battleBoredom()) == false) {
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + boredom.hp);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (alarmclock == 2) {
+            while (hero.hp > 0 && jimmy.hp > 0) {
+
+                System.out.println("------------------------------------------------");
+                System.out.println("Select your Option:\n1. Attack\n2.Guard\n3.Use Magic");
+                System.out.println("------------------------------------------------");
+
+                Scanner option = new Scanner(System.in);
+                int choice = option.nextInt();
+                Battle battle1 = new Battle();
+                Battle battle2 = new Battle();
+
+                switch (choice) {
+                    case 1: {
+                        System.out.println("You used your paddleball on Jimmy's face!,\nhe swung his baseball bat!");
+
+                        if (battle2.battleJimmy()) {
+                            jimmy.takeDamage(jimmy.hp - hero.attack);
+                            hero.takeDamage(hero.hp + (hero.defense / 2) - jimmy.attack);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+
+                        } else if (battle2.battleJimmy() == false) {
+                            System.out.println("Your attack missed, Jimmy's still hit!");
+                            hero.takeDamage(hero.hp - jimmy.attack);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+
+                        }
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("You guarded his swing!,\nhis attack was blocked!");
+
+                        if ((battle2.battleJimmy())) {
+                            // hero.takeDamage((hero.hp));
+                            // jimmy.takeDamage(jimmy.hp);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+                            // else if ((battle1.battle(answer, heroHP)) == false)
+                        } else if ((battle1.battleJimmy()) == false) {
+                            hero.takeDamage((hero.hp - jimmy.attack));
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+                        }
+                    }
+                        break;
+
+                    case 3: {
+                        System.out.println("You attacked Jimmy using magic!,\nhe attacked back!");
+
+                        if (battle2.battleJimmy()) {
+                            hero.takeDamage((hero.hp - jimmy.attack));
+                            jimmy.takeDamage(jimmy.hp - hero.magic);
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+                            // else if ((battle1.battle(answer, heroHP)) == false)
+                        } else if ((battle1.battleJimmy()) == false) {
+                            System.out.println("Your HP:" + hero.hp);
+                            System.out.println("Enemy HP:" + jimmy.hp);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if (hero.hp <= 0 && jimmy.hp <= 0 && alarmclock == 2) {
+            System.out.println("You are tired but shake hands.\nYou go your separate ways.");
+            System.out.println("After a long day of fighting, you go home, eat dinner, then go to bed.");
+
+        } else if (hero.hp <= 0 && alarmclock == 2) {
+            System.out.println("Jimmy beat your ass. All the neighborhood kids are laughing.");
+            System.out.println("Defeated, you go back home in embarrasment.");
+            promptEnterKey();
+            System.out.println(
+                    "After a short day of getting your ass handed to you\nyou go home, eat dinner, then go to bed.");
+            promptEnterKey();
+        } else if (jimmy.hp <= 0 && alarmclock == 2) {
+            System.out.println("You kicked Jimmy's ass. He runs off to cry in his room.");
+            System.out.println(
+                    "The neighborhood kids suddenly appear and clap for you.\nYou enjoy your day at the park.");
+            System.out.println("You leveled up.");
+            promptEnterKey();
+            // Still need to create level system, maybe a linked list
+            promptEnterKey();
+            System.out.println("After a long day of fun, you go home, eat dinner, then go to bed.");
+
+        }
+        if (hero.hp <= 0 && boredom.hp <= 0 && alarmclock == 1) {
+            System.out.println("You defeated boredom, but at what cost?");
+            System.out.println("You lay there in silence until you fall asleep.");
+        } else if (hero.hp <= 0 && alarmclock == 1) {
+            System.out.println("Boredom defeated you. You lay in agony.");
+            System.out.println("Defeated, you try to take a nap.");
+            promptEnterKey();
+            System.out.println("You can't sleep.\nYou eat dinner, then you can fall asleep for the night.");
+            promptEnterKey();
+        } else if (boredom.hp <= 0 && alarmclock == 1) {
+            System.out.println("You don't feel bored anymore. You feel content in your solitude.");
+            System.out.println("You finish reading, gaining new wisdom along the way.");
+            promptEnterKey();
+            System.out.println("You leveled up.");
+            promptEnterKey();
+            System.out.println("You eat dinner, go to your room, and go to sleep for the night.");
+            promptEnterKey();
+
+        }
+
+        System.out.println("You wake up. You feel completely different.");
+        System.out.println("Chapter 2: College");
     }
 
     // method to simplify promting user to press enter
