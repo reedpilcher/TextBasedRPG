@@ -10,10 +10,15 @@ public class Character {
     public int attack;
     public int defense;
     public int magic;
+    public int heroLevel;
 
     public void addName(String newvalue) {
         name = newvalue;
     }
+    public void addLevel(int newvalue) {
+        heroLevel = newvalue;
+    }
+
 
     public void addHp(int newvalue) {
         hp = newvalue;
@@ -49,6 +54,7 @@ public class Character {
     }
 
     public void printstats() {
+        System.out.println("Level: " + heroLevel);
         System.out.println("HP: " + hp);
         System.out.println("Attack: " + attack);
         System.out.println("Defense: " + defense);

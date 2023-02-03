@@ -29,4 +29,17 @@ public boolean battleBoredom() {
 
 }
 
+public boolean battleAlcoholism() {
+    Random rand = new Random();
+    int random_integer = rand.nextInt(115);
+    return random_integer <= 70 ? true : false;
+
+}
+public boolean battlePaper() {
+    Random rand = new Random();
+    int random_integer = rand.nextInt(105);
+    return random_integer <= 65 ? true : false;
+
+}
+
 }
