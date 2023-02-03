@@ -1,14 +1,12 @@
 package rpg;
 
 import java.util.Random;
-import java.util.stream.IntStream;
 
-import static java.lang.System.*;
+
 
 public class Battle {
 
-    private int sword;
-    private int value;
+
 
     public boolean battleGoblin() {
         Random rand = new Random();
@@ -39,6 +37,18 @@ public boolean battlePaper() {
     Random rand = new Random();
     int random_integer = rand.nextInt(105);
     return random_integer <= 65 ? true : false;
+
+}
+public boolean battleUnemployment() {
+    Random rand = new Random();
+    int random_integer = rand.nextInt(120);
+    return random_integer <= 75 ? true : false;
+
+}
+public boolean battleBoss() {
+    Random rand = new Random();
+    int random_integer = rand.nextInt(125);
+    return random_integer <= 80 ? true : false;
 
 }
 
