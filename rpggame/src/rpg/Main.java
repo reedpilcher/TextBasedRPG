@@ -166,7 +166,7 @@ public class Main {
                     // Using a boolean method to determine whether the random number is within the
                     // range to hit or miss
                     // There is an element of randomness and not 100% accuracy everytime
-                    if (battle1.battleGoblin() == true)
+                    if (battle1.battle(60, 55))
                     // if the method returns true, attack hits. If it returns false, attack misses.
                     {
                         System.out.println("You attacked the goblin!, he attacked back!");
@@ -177,7 +177,7 @@ public class Main {
 
                         System.out.println("------------------------------------------------");
                         // else if (battle1.battle(answer, heroHP) == false)
-                    } else if (battle1.battleGoblin() == false) {
+                    } else if (!battle1.battle(60, 55)) {
                         System.out.println("You attack missed, he hit you though!");
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
@@ -190,14 +190,14 @@ public class Main {
                 // case 2 is to guard attacks; This remains consistent for every battle.
                 case 2: {
 
-                    if ((battle1.battleGoblin() == true)) {
+                    if (battle1.battle(60, 55)) {
                         System.out.println("You guarded the attack!, his attack was blocked!");
                         hero.takeDamage((hero.hp));
                         goblin1.takeDamage(goblin1.hp);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
                         // else if ((battle1.battle(answer, heroHP)) == false)
-                    } else if ((battle1.battleGoblin()) == false) {
+                    } else if (!battle1.battle(60, 55)) {
                         System.out.println("Guard failed, he snuck in an attack!");
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
@@ -208,14 +208,14 @@ public class Main {
                 case 3: {
 
                     // if ((battle1.battle(goblin1.hp, hero.hp)))
-                    if (battle1.battleGoblin()) {
+                    if (battle1.battle(60, 55)) {
                         System.out.println("You attacked the goblin using magic!, he attacked back!");
                         hero.takeDamage((hero.hp - goblin1.attack));
                         goblin1.takeDamage(goblin1.hp - hero.magic);
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
                         // else if ((battle1.battle(answer, heroHP)) == false)
-                    } else if ((battle1.battleGoblin()) == false) {
+                    } else if (!battle1.battle(60, 55)) {
                         System.out.println("Your magic missed, he hit you!");
                         System.out.println("Your HP:" + hero.hp);
                         System.out.println("Enemy HP:" + goblin1.hp);
@@ -303,7 +303,7 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle3.battleBoredom() == true) {
+                        if (battle3.battle(90, 65)) {
                             System.out.println("You read a book,\nyour boredom worsens!");
                             boredom.takeDamage(boredom.hp - hero.attack);
                             hero.takeDamage(hero.hp - boredom.attack);
@@ -312,7 +312,7 @@ public class Main {
 
                             System.out.println("------------------------------------------------");
 
-                        } else if (battle3.battleBoredom() == false) {
+                        } else if (!battle3.battle(90, 65)) {
                             System.out.println("You tried to turn the tv on, but it's unplugged!");
                             hero.takeDamage(hero.hp - boredom.attack);
                             System.out.println("Your HP:" + hero.hp);
@@ -325,12 +325,12 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle3.battleBoredom() == true)) {
+                        if (battle3.battle(90, 65)) {
                             System.out.println("You quietly listened to music!,\nboredom is tempoarily halted!");
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boredom.hp);
 
-                        } else if ((battle3.battleBoredom()) == false) {
+                        } else if (!battle3.battle(90, 65)) {
                             System.out.println("You got excited, but got bored right after.");
                             hero.takeDamage((hero.hp - boredom.attack));
                             System.out.println("Your HP:" + hero.hp);
@@ -342,14 +342,14 @@ public class Main {
 
                     case 3: {
 
-                        if (battle3.battleBoredom() == true) {
+                        if (battle3.battle(90, 65)) {
                             System.out.println("You drew a picture!,\nbut you're still a little bored!");
                             hero.takeDamage((hero.hp - boredom.attack));
                             boredom.takeDamage(boredom.hp - hero.magic);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boredom.hp);
 
-                        } else if ((battle3.battleBoredom()) == false) {
+                        } else if (!battle3.battle(90, 65)) {
                             System.out.println("You tried drawing, but all your colored pencils are dull!");
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boredom.hp);
@@ -375,7 +375,7 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle2.battleJimmy() == true) {
+                        if (battle2.battle(80, 65)) {
                             System.out
                                     .println("You used your paddleball on Jimmy's face!,\nhe swung his baseball bat!");
                             jimmy.takeDamage(jimmy.hp - hero.attack);
@@ -383,7 +383,7 @@ public class Main {
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + jimmy.hp);
 
-                        } else if (battle2.battleJimmy() == false) {
+                        } else if (!battle2.battle(80, 65)) {
                             System.out.println("Your attack missed, Jimmy's still hit!");
                             hero.takeDamage(hero.hp - jimmy.attack);
                             System.out.println("Your HP:" + hero.hp);
@@ -394,14 +394,14 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle2.battleJimmy() == true)) {
+                        if (battle2.battle(80, 65)) {
                             System.out.println("You guarded his swing!,\nhis attack was blocked!");
                             // hero.takeDamage((hero.hp));
                             // jimmy.takeDamage(jimmy.hp);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + jimmy.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle1.battleJimmy()) == false) {
+                        } else if (!battle1.battle(80, 65)) {
                             System.out.println("You tried to block him, but he called you a pussy and hit you!");
                             hero.takeDamage((hero.hp - jimmy.attack));
                             System.out.println("Your HP:" + hero.hp);
@@ -412,14 +412,14 @@ public class Main {
                     }
                     case 3: {
 
-                        if (battle2.battleJimmy() == true) {
+                        if (battle2.battle(80, 65)) {
                             System.out.println("You attacked Jimmy using magic!,\nhe attacked back!");
                             hero.takeDamage((hero.hp - jimmy.attack));
                             jimmy.takeDamage(jimmy.hp - hero.magic);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + jimmy.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle1.battleJimmy()) == false) {
+                        } else if (!battle1.battle(80, 65)) {
                             System.out.println("You aren't magic, your atack missed!");
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + jimmy.hp);
@@ -623,7 +623,7 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle4.battleAlcoholism() == true) {
+                        if (battle4.battle(115, 70)) {
                             System.out.println("You pour your beer out,\nbut there's still a shit ton!");
                             alcoholism.takeDamage(alcoholism.hp - hero.attack);
                             hero.takeDamage(hero.hp - alcoholism.attack);
@@ -632,7 +632,7 @@ public class Main {
 
                             System.out.println("------------------------------------------------");
 
-                        } else if (battle4.battleAlcoholism() == false) {
+                        } else if (!battle4.battle(115, 70)) {
                             System.out.println(
                                     "You attempt to pour the beer down the drain, but you take a swig anyways!");
                             hero.takeDamage(hero.hp - alcoholism.attack);
@@ -646,12 +646,12 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle4.battleAlcoholism() == true)) {
+                        if (battle4.battle(115, 70)) {
                             System.out.println("You didn't drink the beer,\nyou sober up a bit!");
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + alcoholism.hp);
 
-                        } else if ((battle4.battleAlcoholism()) == false) {
+                        } else if (!battle4.battle(115, 70)) {
                             System.out.println("You tried not to drink the beer,\nbut it's calling your name!");
                             hero.takeDamage((hero.hp - alcoholism.attack));
                             System.out.println("Your HP:" + hero.hp);
@@ -662,14 +662,14 @@ public class Main {
 
                     case 3: {
 
-                        if (battle4.battleAlcoholism() == true) {
+                        if (battle4.battle(115, 70)) {
                             System.out.println("You shook up the beer and sprayed it at the wall!,\nwhat the fuck???!");
                             hero.takeDamage((hero.hp - alcoholism.attack));
                             alcoholism.takeDamage(alcoholism.hp - hero.magic);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + alcoholism.hp);
 
-                        } else if ((battle4.battleAlcoholism()) == false) {
+                        } else if (!battle4.battle(115, 70)) {
                             System.out.println("You tried to open the beer, but it slipped out of your hand!");
                             hero.takeDamage(hero.hp - alcoholism.attack);
                             System.out.println("Your HP:" + hero.hp);
@@ -694,14 +694,14 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle4.battlePaper() == true) {
+                        if (battle4.battle(105, 65)) {
                             System.out.println("You wrote 100 words!,\nbut half of those aren't real words!");
                             paper.takeDamage(paper.hp - hero.attack);
                             hero.takeDamage(hero.hp - paper.attack);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + paper.hp);
 
-                        } else if (battle4.battlePaper() == false) {
+                        } else if (!battle4.battle(105, 65)) {
                             System.out.println(
                                     "Your weren't even typing dude,\ntime to retype everything you just wrote!");
                             hero.takeDamage(hero.hp - paper.attack);
@@ -713,13 +713,13 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle4.battlePaper() == true)) {
+                        if (battle4.battle(105, 65)) {
                             System.out.println("You didn't accidentally delete everything!,\nnice save!");
 
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + paper.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle4.battlePaper()) == false) {
+                        } else if (!battle4.battle(105, 65)) {
                             System.out.println("You tried to be smart, but you couldn't.");
                             hero.takeDamage((hero.hp - paper.attack));
                             System.out.println("Your HP:" + hero.hp);
@@ -730,7 +730,7 @@ public class Main {
 
                     case 3: {
 
-                        if (battle4.battlePaper() == true) {
+                        if (battle4.battle(105, 65)) {
                             System.out.println(
                                     "You cited your source and added 70 words!,\nbut you still need to spell check!");
                             hero.takeDamage((hero.hp - paper.attack));
@@ -738,7 +738,7 @@ public class Main {
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + paper.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle4.battlePaper()) == false) {
+                        } else if (!battle4.battle(105, 65)) {
                             System.out.println("You cited your source!,\nbut used APA intead of MLA!");
                             hero.takeDamage(hero.hp - paper.attack);
                             System.out.println("Your HP:" + hero.hp);
@@ -959,7 +959,7 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle5.battleUnemployment() == true) {
+                        if (battle5.battle(120, 75)) {
                             System.out.println(
                                     "Apply for food stamps, get approved but you have to apply to another job!");
                             unemployment.takeDamage(unemployment.hp - hero.attack);
@@ -969,7 +969,7 @@ public class Main {
 
                             System.out.println("------------------------------------------------");
 
-                        } else if (battle5.battleUnemployment() == false) {
+                        } else if (!battle5.battle(120, 75)) {
                             System.out.println(
                                     "Your food stamps get delayed by another week!");
                             hero.takeDamage(hero.hp - unemployment.attack);
@@ -983,12 +983,12 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle5.battleUnemployment() == true)) {
+                        if (battle5.battle(120, 75)) {
                             System.out.println("You drive around for an hour so your wife thinks you're at work!");
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + unemployment.hp);
 
-                        } else if ((battle5.battleUnemployment()) == false) {
+                        } else if (!battle5.battle(120, 75)) {
                             System.out.println(
                                     "You drive around so your wife thinks you're at work, but she sees you out her work window!");
                             hero.takeDamage((hero.hp - unemployment.attack));
@@ -1000,14 +1000,14 @@ public class Main {
 
                     case 3: {
 
-                        if (battle5.battleUnemployment() == true) {
+                        if (battle5.battle(120, 75)) {
                             System.out.println("You use photoshop to create a fake paycheck!");
                             hero.takeDamage((hero.hp - unemployment.attack));
                             unemployment.takeDamage(unemployment.hp - hero.magic);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + unemployment.hp);
 
-                        } else if ((battle5.battleUnemployment()) == false) {
+                        } else if (!battle5.battle(120, 75)) {
                             System.out.println("You attempt to photoshop a paycheck, but it looks fake as hell!");
                             hero.takeDamage(hero.hp - unemployment.attack);
                             System.out.println("Your HP:" + hero.hp);
@@ -1032,14 +1032,14 @@ public class Main {
                 switch (choice) {
                     case 1: {
 
-                        if (battle5.battleBoss() == true) {
+                        if (battle5.battle(125, 80)) {
                             System.out.println("You kick your boss in the balls, he swings on you!");
                             boss.takeDamage(boss.hp - hero.attack);
                             hero.takeDamage(hero.hp - boss.attack);
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boss.hp);
 
-                        } else if (battle5.battleBoss() == false) {
+                        } else if (!battle5.battle(125, 80)) {
                             System.out.println(
                                     "You try to kick your boss in the balls, but he grabs your leg and puts you on the ground!");
                             hero.takeDamage(hero.hp - boss.attack);
@@ -1051,13 +1051,13 @@ public class Main {
                     }
                     case 2: {
 
-                        if ((battle5.battleBoss() == true)) {
+                        if (battle5.battle(125, 80)) {
                             System.out.println("You hide under your desk, and your boss doesn't know where you are!");
 
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boss.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle5.battleBoss()) == false) {
+                        } else if (!battle5.battle(125, 80)) {
                             System.out.println(
                                     "You hide under your desk, but your boss kicks you while you're under there");
                             hero.takeDamage((hero.hp - boss.attack));
@@ -1069,7 +1069,7 @@ public class Main {
 
                     case 3: {
 
-                        if (battle5.battleBoss() == true) {
+                        if (battle5.battle(125, 80)) {
                             System.out.println(
                                     "You speak Portugese to your boss, he gets confused!");
                             hero.takeDamage((hero.hp - boss.attack));
@@ -1077,7 +1077,7 @@ public class Main {
                             System.out.println("Your HP:" + hero.hp);
                             System.out.println("Enemy HP:" + boss.hp);
                             // else if ((battle1.battle(answer, heroHP)) == false)
-                        } else if ((battle5.battleBoss()) == false) {
+                        } else if (!battle5.battle(125, 80)) {
                             System.out.println("You try to speak Portugese to your boss, but he ignores it!");
                             hero.takeDamage(hero.hp - boss.attack);
                             System.out.println("Your HP:" + hero.hp);
